@@ -6,4 +6,5 @@ wetty nodejs
 > * nodejs的进程模块 
 > * nodejs web服务 
 > * 简单的 AJAX发起请求 
-#运行程序前请自主下载依赖：**iconv**       **iconv-lite**
+
+##运行程序前请自主下载依赖：**iconv**       **iconv-lite**
