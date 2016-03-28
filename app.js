@@ -17,11 +17,11 @@ var iconv;
  */
 if (/window/.test(os.platform())) {
     console.log(os.platform());
-    iconv = require('iconv-lite');
+    iconv = require('iconv-lite').decode;
 }
 else {
     Iconv = require('iconv').Iconv;
-    iconv=new Iconv(encoding,'UTF-8');
+    iconv=new Iconv(encoding,'UTF-8').convert;
 
 }
 
@@ -50,8 +50,8 @@ http.createServer(function (req, res) {
         console.log(url.parse(req.url, true).query.cmd + ":" + filter(url.parse(req.url, true).query.cmd));
         process(filter(url.parse(req.url, true).query.cmd), {encoding: 'binary'}, function (err, stdout, stderr) {
                 res.writeHead(200, {'Content-Type': 'text/plain'});
-                // res.end(iconv.decode(new Buffer(stdout,binaryEncoding),encoding));
-                res.end(iconv.convert(new Buffer(stdout, binaryEncoding)));
+                res.end(iconv(new Buffer(stdout,binaryEncoding),encoding));
+                // res.end(iconv.convert(new Buffer(stdout, binaryEncoding)));
             }
         );
     }
