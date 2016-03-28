@@ -15,7 +15,7 @@ var iconv;
  *֧��linux
  * windows
  */
-if (/window/.test(os.platform())) {
+if (/$win/.test(os.platform())) {  //mac : darwin
     console.log(os.platform());
     iconv = require('iconv-lite').decode;
 }
@@ -61,6 +61,12 @@ http.createServer(function (req, res) {
         res.end('404 error! ');
     }
 
-
 }).listen(8844);
 console.log('server running...')
+//<editor-fold desc="Description">
+//region Description
+function ad(hell) {
+
+}
+//endregion
+}
