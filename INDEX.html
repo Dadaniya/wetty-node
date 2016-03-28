@@ -19,7 +19,8 @@
                 xmlhttp.onreadystatechange = function () {
                     console.log(xmlhttp.readyState);
                     if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                        document.getElementById('content').innerHTML ='<HR/>'+cmd+ ' result：<br><PRE>'+xmlhttp.responseText+'</PRE><HR/>'+document.getElementById('content').innerHTML;
+                        document.getElementById('content').innerHTML = '<HR/><strong>' + cmd + ' </strong>result：<br><PRE>' + xmlhttp.responseText + '</PRE><HR/>' + document.getElementById('content').innerHTML;
+                        document.getElementById("txt1").value = "";
                     }
 
                 }
@@ -36,8 +37,8 @@
 </head>
 <body>
 
-    <input type="text" id="txt1" onkeydown="command(this.value)"/>
-    <!-- <button type="button" onclick="command(document.getElementById('txt1').text())">执行</button>-->
+<input type="text" id="txt1" onkeydown="command(this.value)"/>
+<!-- <button type="button" onclick="command(document.getElementById('txt1').text())">执行</button>-->
 
 <div id="content">
 
