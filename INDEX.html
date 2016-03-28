@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        function command(cmd) {
+            if (event.keyCode == 13) {
+                var xmlhttp;
+                if (cmd.length == 0) {
+                    return;
+                }
+                if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
+                    xmlhttp = new XMLHttpRequest();
+                }
+                else {// code for IE6, IE5
+                    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+                }
+                xmlhttp.onreadystatechange = function () {
+                    console.log(xmlhttp.readyState);
+                    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                        document.getElementById('content').innerHTML ='<HR/>'+cmd+ ' result：<br><PRE>'+xmlhttp.responseText+'</PRE><HR/>'+document.getElementById('content').innerHTML;
+                    }
+
+                }
+
+                xmlhttp.open('GET', '/COM?cmd=' + cmd, true);
+                xmlhttp.send();
+
+            }
+
+
+        }
+
+    </script>
+</head>
+<body>
+
+    <input type="text" id="txt1" onkeydown="command(this.value)"/>
+    <!-- <button type="button" onclick="command(document.getElementById('txt1').text())">执行</button>-->
+
+<div id="content">
+
+</div>
+
+</body>
+</html>
